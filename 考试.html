@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>泌尿外科疾病知识小测试</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="mui.css" rel="stylesheet">
+	<link href="iconfont.css" rel="stylesheet">
+	<link href="subPage2.css" rel="stylesheet">
+	<link href="bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="global.css">
+	<script type="text/javascript" src="jquery-1.js"></script>
+	<style type="text/css">
+		.mui-bar-nav{background-color: #3D8FCB!important;}
+		.mui-title-tab{height: 100%;width: 100%; float: right; text-align: center;}
+		.mui-content{margin-bottom: 50px}
+		.test_time{width: 50% !important; display: inline-block; float:none}
+		.non_click{background-color: gray!important;}
+		.can_click{background-color: #3D8FCB!important;}
+	</style>
+	<link rel="stylesheet" href="layer.css" id="layui_layer_skinlayercss" style=""></head>
+<body class="mui-ios mui-ios-14 mui-ios-14-6" style="display: block;">
+<header class="mui-bar mui-bar-nav">
+	<div class="mui-title-tab">
+		<span id="CountMsg" style="color: white; line-height: 44px;">倒计时：<strong id="RemainM" style="margin:-20px 0px -20px 0px">30</strong>分<strong id="RemainS">00</strong>秒</span>
+	</div>
+</header>
+<div class="mui-content">
+	<!-- 单项选择 -->
+	<div class="test" id="q0">
+		<div class="content_tl">
+			<p class="content_tl_t">1.正常人每日生理需要的水摄入量是多少？。</p>
+			<p class="p_left"><span><input name="answers" type="checkbox" value="A"></span><label id="A_item">A.500~1000ml</label></p>
+			<p class="p_left"><span><input name="answers" type="checkbox" value="B"></span><label id="B_item">B.1000~1500ml</label></p>
+			<p class="p_left"><span><input name="answers" type="checkbox" value="C"></span><label id="C_item">C.1500~2000ml</label></p>
+			<p class="p_left"><span><input name="answers" type="checkbox" value="D"></span><label id="D_item">D.3000~4000ml</label></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="enter_btn">
+		<a id="prevQues" class="b non_click" style="border-right: 1px solid #fff" href="#">上一题</a>
+		<a id="nextQues" class="c can_click" href="#">下一题</a>
+	</div>
+</div>
+<script type="text/javascript" src="bootstrap.js"></script>
+<script type="text/javascript" src="mui.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="math.js"></script>
+<script type="text/javascript" src="popper.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="windowopen.js"></script>
+<script type="text/javascript" src="layer.js"></script>
+
+<script type="text/javascript">
+	let ques_index = 1;
+	var CONTENT_MAP = new Map([
+		[1 , "正常人每日生理需要的水摄入量是多少？"] ,
+		[2 , "小便出血需要就诊哪个科室？"],
+		[3 , "结石患者可以做哪些运动，促进结石排出？"],
+		[4 , "膀胱镜拔管要提前多久做核酸？"],
+		[5 , "肾结石病人需要每天喝多少水？"],
+		[6 , "包皮术后多久可以淋浴？"],
+		[7 , "前列腺伤口拆线时间是多久？"],
+		[8 , "结石预防最重要的方法是？"],
+		[9 , "体内的双J管如果在家期间出现发热怎么办？"],
+		[10, "前列腺术后提肛运动什么时候开始？"]
+	]);
+	// 选项A
+	var ANS_A_MAP = new Map([
+		[1 , "500~1000ml"] ,
+		[2 , "消化内科"],
+		[3 , "游泳"],
+		[4 , "三天"],
+		[5 , "200ml"],
+		[6 , "一个月"],
+		[7 , "术后第一天"],
+		[8 , "不吃含钙食物"],
+		[9 , "第二天挂泌尿门诊"],
+		[10, "拔除导尿管后"]
+	]);
+	// 选项B
+	var ANS_B_MAP = new Map([
+		[1 , "1000~1500ml"] ,
+		[2 , "泌尿外科"],
+		[3 , "散步"],
+		[4 , "两天"],
+		[5 , "500ml"],
+		[6 , "当天"],
+		[7 , "出院后"],
+		[8 , "不吃菠菜"],
+		[9 , "自己吃消炎药"],
+		[10, "出院后"]
+	]);
+	// 选项C
+	var ANS_C_MAP = new Map([
+		[1 , "1500~2000ml"] ,
+		[2 , "肾内科"],
+		[3 , "跳绳"],
+		[4 , "当天"],
+		[5 , "2000ml"],
+		[6 , "术后一周"],
+		[7 , "按医嘱就医"],
+		[8 , "多喝水"],
+		[9 , "立刻急诊就医"],
+		[10, "术后第一天"]
+	]);
+	// 选项D
+	var ANS_D_MAP = new Map([
+		[1 , "3000~4000ml"] ,
+		[2 , "脑外科"],
+		[3 , "瑜伽"],
+		[4 , "一天"],
+		[5 , "3000ml"],
+		[6 , "三个月 "],
+		[7 , "什么时间有空都可以"],
+		[8 , "少喝牛奶"],
+		[9 , "等等看看情况"],
+		[10, "想什么时候就什么时候"]
+	]);
+	// 正确答案
+	var RIGHT_ANS_MAP = new Map([
+		[1 , "C"] ,
+		[2 , "B"],
+		[3 , "C"],
+		[4 , "D"],
+		[5 , "D"],
+		[6 , "C"],
+		[7 , "C"],
+		[8 , "C"],
+		[9 , "C"],
+		[10, "C"]
+	]);
+
+	// 用户答案
+	var CUS_ANS_MAP = new Map([
+		[1 , ""] ,
+		[2 , ""],
+		[3 , ""],
+		[4 , ""],
+		[5 , ""],
+		[6 , ""],
+		[7 , ""],
+		[8 , ""],
+		[9 , ""],
+		[10, ""]
+	]);
+
+	var remainingTime = parseFloat('1800')*1000; // 获取到的服务器时间
+
+	var totalCount = CONTENT_MAP.size;
+
+	$(function(){
+		//选择
+		$('.p_left').click(function(){
+			var qtype=2;
+			var check = $(this).find('input').prop('checked');
+			if(check){
+				$(this).find('input').prop('checked',false);
+			}else{
+				if(qtype=='2'||qtype=='4'){//单选
+					$('input:checkbox').prop('checked',false);
+				}
+				$(this).find('input').prop('checked',true);
+			}
+		});
+		//选择
+		$('input').click(function(){
+			var qtype=2;
+			var check = $(this).prop('checked');
+			if(check){
+				$(this).prop('checked',false);
+			}else{
+				if(qtype=='2' || qtype=='1'){//单选，判断
+					$('input').prop('checked',false);
+				}
+				$(this).prop('checked',true);
+			}
+		});
+
+		// 下一题
+		$('#nextQues').click(function(){
+			submitForm('next');
+		});
+		// 上一题
+		$("#prevQues").click(function(){
+			if(!$(this).hasClass('non_click')){
+				submitForm('prev');
+			}
+		});
+		// 结束考试
+		$("#endExam").click(function(){
+			submitForm('endExam');
+		});
+
+		function submitForm(type){
+			if("prev" == type){
+				ques_index--;
+				loadQues(type, ques_index);
+			}else if("next" == type){
+				let cusAns = '';
+				$('input[name=answers]').each(function(){
+					var isChecked = $(this).prop('checked');
+					if(isChecked){
+						cusAns = $(this).val();
+					}
+				});
+				if(cusAns == '' || cusAns == null){
+					mui.alert("您还没有作答，请先作答！");
+					return;
+				}
+				let rightAns = RIGHT_ANS_MAP.get(ques_index);
+				if(rightAns != cusAns){
+					mui.alert("您未答对，请重新作答！");
+					return;
+				}else {
+					CUS_ANS_MAP.set(ques_index, cusAns); // 设置用户答案
+					if(ques_index != totalCount){
+						mui.alert('答对了，点击【确定】加载下一题！', '温馨提示', function() {
+							ques_index++;
+							loadQues(type, ques_index);
+						});
+					}else{
+						mui.alert('恭喜你答题结束，完成挑战！！', '温馨提示', function() {
+							closeWindow();
+						});
+					}
+				}
+			}
+		}
+
+		// 加载试题信息
+		function loadQues(type, quesIndex) {
+			$('input').prop('checked',false);
+			let content = CONTENT_MAP.get(quesIndex);
+			let itemA = ANS_A_MAP.get(quesIndex);
+			let itemB = ANS_B_MAP.get(quesIndex);
+			let itemC = ANS_C_MAP.get(quesIndex);
+			let itemD = ANS_D_MAP.get(quesIndex);
+
+			$(".content_tl_t").text(quesIndex + "." + content);
+			$("#A_item").text(itemA);
+			$("#B_item").text(itemB);
+			$("#C_item").text(itemC);
+			$("#D_item").text(itemD);
+			if("prev" == type){
+				let cusAns = CUS_ANS_MAP.get(quesIndex);
+				if(cusAns != '' && cusAns != null){
+					$("input:checkbox[value='" + cusAns +"']").prop('checked','true');
+				}
+			}
+			$(".non_click").removeClass('non_click').addClass('can_click');
+			if(quesIndex == 1){
+				$("#prevQues").addClass('non_click');
+			}
+		}
+	});
+
+	$(document).ready(function(){
+		var cusAnswer = '';
+		$("input[name=answers]").each(function(){
+			var a = $(this).val();
+			if(cusAnswer.indexOf(a)!=-1){
+				$(this).prop('checked',true);
+			}
+		});
+	});
+
+	function closeWindow(){
+		location.href = "about:blank";
+		window.opener = null;
+		window.open('', '_self').close();
+		window.close();
+	}
+
+	//记录时间
+	function countDown(){
+		let jishi = true;
+		let nRT = remainingTime;
+		let nM = Math.floor(nRT/(1000*60));
+		let nS = Math.floor(nRT/1000) % 60;
+		document.getElementById("RemainM").innerHTML=nM;
+		document.getElementById("RemainS").innerHTML=nS;
+		remainingTime-=1000;
+
+		if(nM == 10 && nS == '00'){
+			mui.toast('还有10分钟考试结束，试卷将强制提交，请抓紧时间答题!');
+		}
+		if(nM == '00' && nS == '00'){
+			jishi = false;
+			layer.msg('答题结束...', function(){
+				closeWindow();
+			});
+		}
+		if(jishi){
+			setTimeout("countDown()",1000);
+		}
+	}
+
+	var examType = '3';
+	var examState = '0';
+	if(examType != 2 && examState != 1){
+		window.onload=countDown;
+	}
+	var _count = 0;
+	$(function () {
+		var timer = setInterval(function(){
+			if($(".alt-1").text()=="00:00:00") {
+				mui.toast(答题时间已到, {duration: 1000, type: 'div'});
+				closeWindow();
+			}
+		},1000);
+		var _htmlUp=$("#aUp").html();
+		if(_htmlUp=="无") {
+			$(this).removeAttr('onclick');
+		}
+	});
+
+	window.jQuery(function($) {
+		$('time').countDown({
+			with_separators : false
+		});
+		$('.alt-1').countDown({
+			css_class : 'countdown-alt-1'
+		});
+	});
+</script>
+</body>
+</html>
